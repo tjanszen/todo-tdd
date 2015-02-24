@@ -6,9 +6,16 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Hapi Prototype
+      a.navbar-brand(href='/') Ta-Du
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li.active: a(href='/'): i.fa.fa-home &nbsp; Home
-        li.active: a(href='/login'): i.fa.fa-home &nbsp; Login
-        li.active: a(href='/register'): i.fa.fa-home &nbsp; Register
+        if email
+          form.navbar-form.navbar-left(method='post', action='/logout')
+            button.btn.btn-default#logout-btn(type='submit'): i.fa.fa-home &nbsp; Logout
+        else 
+          li.active: a(href='/login'): i.fa.fa-home &nbsp; Login 
+          li.active: a(href='/register'): i.fa.fa-home &nbsp; Register
+        li: a(href='#')= email || 'Guest'
+        
+        
