@@ -9,6 +9,12 @@ nav.navbar.navbar-default
       a.navbar-brand(href='/') Hapi Prototype
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li.active: a(href='/'): i.fa.fa-home &nbsp; Home
-        li.active: a(href='/login'): i.fa.fa-home &nbsp; Login
-        li.active: a(href='/register'): i.fa.fa-home &nbsp; Register
+        li: a(href='/'): i.fa.fa-home &nbsp; Home
+        if email
+          form.navbar-form.navbar-left(method='post', action='/logout')
+            button.logoutbutton.btn(type='submit'): i.fa.fa-home &nbsp; Logout
+          //- li: button.btn.btn-default: i.fa.fa-sign-out Logout
+        else
+          li: a(href='/login'): i.fa.fa-home &nbsp; Login
+          li: a(href='/register'): i.fa.fa-home &nbsp; Register
+        li: a(href='#')= email || 'Anonymous'

@@ -1,10 +1,8 @@
 'use strict';
 
 module.exports = {
-  auth: {
-    mode: 'try'
-  },
   handler: function(request, reply) {
-    reply.view('templates/users/register');
+    request.auth.session.clear();
+    reply.redirect('/');
   }
 };
