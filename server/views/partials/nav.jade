@@ -11,6 +11,7 @@ nav.navbar.navbar-default
       ul.nav.navbar-nav.navbar-right
         li: a(href='/'): i.fa.fa-home &nbsp; Home
         if email
+          li: a(href='/items/new'): i.fa.fa-pencil &nbsp; New Item
           form.navbar-form.navbar-left(method='post', action='/logout')
             button.logoutbutton.btn(type='submit'): i.fa.fa-home &nbsp; Logout
           //- li: button.btn.btn-default: i.fa.fa-sign-out Logout
