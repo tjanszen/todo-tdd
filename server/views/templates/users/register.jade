@@ -1,0 +1,12 @@
+extends ../../layouts/master
+block content
+  .row
+    .col-xs-12
+      h3 Register
+
+      form(method='post', action='/users')
+        label Email
+        input#email(type='email', name='email', required, autofocus=true)
+        label Password
+        input#password(type='password', name='password', required)
+        button(type='submit') Register
