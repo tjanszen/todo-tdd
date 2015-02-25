@@ -3,6 +3,7 @@
 'use strict';
 
 var expect = require('chai').expect;
+var Item = require('../../server/models/item');
 var User = require('../../server/models/user');
 var Lab = require('lab');
 var lab = exports.lab = Lab.script();
@@ -85,6 +86,15 @@ describe('items route', function() {
     server.inject(options, function(response) {
       expect(response.statusCode).to.equal(400);
       done();
+    });
+  });
+  describe('items index', function() {
+    it('should display the view', function(done) {
+      var options = {method: 'get', url:'/items', headers: {cookie: cookie}};
+      server.inject(options, function(response) {
+        expect(response.statusCode).to.equal(200);
+        done();
+      });
     });
   });
 });
