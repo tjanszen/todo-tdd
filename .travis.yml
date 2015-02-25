@@ -1,0 +1,7 @@
+language: node.js
+node.js:
+  -"0.12"
+services:
+  - mongodb
+notifications:
+  email: false
