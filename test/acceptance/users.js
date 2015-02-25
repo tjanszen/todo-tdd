@@ -10,13 +10,13 @@ var describe = lab.describe;
 var it = lab.it;
 var beforeEach = lab.beforeEach;
 var server = require('../../server/index');
-
-require('../../server/index');
+var cp = require('child_process');
+var dbname = process.env.MONGO_URL.split('/')[3];
 
 describe('users route', function() {
   beforeEach(function(done) {
-    User.remove(function() {
-      User.register({email:'test@test.test', password:'123'}, done);
+    cp.execFile(__dirname + '/../scripts/clean-db.sh', [dbname], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr) {
+      done();
     });
   });
   describe('get /register', function() {
@@ -50,7 +50,7 @@ describe('users route', function() {
         method: 'post',
         url:'/users',
         payload:{
-          email:'test@test.test',
+          email:'f@g.h',
           password: '123'
         }
       };
@@ -108,8 +108,8 @@ describe('users route', function() {
         method: 'post',
         url:'/authenticate',
         payload:{
-          email:'test@test.test',
-          password: '123'
+          email:'f@g.h',
+          password: '1234'
         }
       };
       server.inject(options, function(response) {

@@ -11,25 +11,24 @@ var describe = lab.describe;
 var it = lab.it;
 var beforeEach = lab.beforeEach;
 var server = require('../../server/index');
+var cp = require('child_process');
+var dbname = process.env.MONGO_URL.split('/')[3];
 var cookie;
-require('../../server/index');
 
 describe('items route', function() {
   beforeEach(function(done) {
-    User.remove(function() {
-      User.register({email:'b@c.d', password:'1234'}, function() {
-        var options = {
-          method: 'post',
-          url:'/authenticate',
-          payload:{
-            email:'b@c.d',
-            password: '1234'
-          }
-        };
-        server.inject(options, function(response) {
-          cookie = response.headers['set-cookie'][0].match(/snickerdoodle=[^;]+/)[0];
-          done();
-        });
+    cp.execFile(__dirname + '/../scripts/clean-db.sh', [dbname], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr) {
+      var options = {
+        method: 'post',
+        url:'/authenticate',
+        payload:{
+          email:'e@f.g',
+          password: '1234'
+        }
+      };
+      server.inject(options, function(response) {
+        cookie = response.headers['set-cookie'][0].match(/snickerdoodle=[^;]+/)[0];
+        done();
       });
     });
   });
