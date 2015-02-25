@@ -1,0 +1,34 @@
+extends ../../layouts/master
+block New Item
+  .row#login
+    .col-sm-6.col-md-4.col-md-offset-4
+      .panel.panel-default
+        .panel-heading
+          h3 Sign In
+        .panel-body
+          form(action='/users/new', method='post')
+            fieldset
+              .row
+                .col-sm-12.col-md-10.col-md-offset-1
+                  .form-group
+                    .input-group
+                      label Title
+                      input.form-control(typ='text' name='title' autofocus='')
+                  .form-group
+                    .input-group
+                      label Due Date
+                      input.form-control(type='date' name='dueDate' required)
+                  .form-group
+                    .input-group
+                      span.input-group-addon
+                      label Tags
+                      input.form-control(type='text' name='tags' required)
+                  .form-group
+                    .input-group
+                      label Priority
+                      select.form-control(name='priority' required)
+                        option High
+                        option Medium
+                        option Low
+                  .form-group
+                    input.btn.btn-lg.btn-primary.btn-block(type='submit' value='Sign In')

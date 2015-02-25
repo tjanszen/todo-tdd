@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   handler: function(request, reply) {
-    User.register(request.payload, function(err, user) {
+    User.register(request.payload, function(err) {
       if (err) {
         reply.redirect('/register');
       } else {
