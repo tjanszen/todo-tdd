@@ -1,0 +1,28 @@
+{
+    "_id" : {"$oid":"0000000000000000000000a1"},
+    "title" : "Title",
+    "due" : {"$date":1424828193438},
+    "priority" : "High",
+    "userId" : {"$oid":"000000000000000000000001"},
+    "isCompleted" : false,
+    "tags" : [ 
+        "one", 
+        "two", 
+        "three"
+    ],
+    "createdAt" : {"$date":1424828183538}
+}
+{
+    "_id" : {"$oid":"0000000000000000000000a2"},
+    "title" : "Title2",
+    "due" : {"$date":1424858193438},
+    "priority" : "Low",
+    "userId" : {"$oid":"000000000000000000000002"},
+    "isCompleted" : false,
+    "tags" : [ 
+        "blue", 
+        "green", 
+        "maroon"
+    ],
+    "createdAt" : {"$date":1424818183538}
+}

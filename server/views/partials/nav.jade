@@ -9,13 +9,14 @@ nav.navbar.navbar-default
       a.navbar-brand(href='/') Ta-Du
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li.active: a(href='/'): i.fa.fa-home &nbsp; Home
+        li: a(href='/'): i.fa.fa-home &nbsp; Home
         if email
+          li: a(href='/items/new'): i.fa.fa-pencil &nbsp; New Item
           form.navbar-form.navbar-left(method='post', action='/logout')
-            button.btn.btn-default#logout-btn(type='submit'): i.fa.fa-home &nbsp; Logout
-        else 
-          li.active: a(href='/login'): i.fa.fa-home &nbsp; Login 
-          li.active: a(href='/register'): i.fa.fa-home &nbsp; Register
+            button.logoutbutton.btn(type='submit'): i.fa.fa-home &nbsp; Logout
+          //- li: button.btn.btn-default: i.fa.fa-sign-out Logout
+        else
+          li: a(href='/login'): i.fa.fa-home &nbsp; Login
+          li: a(href='/register'): i.fa.fa-home &nbsp; Register
         li: a(href='#')= email || 'Guest'
-        
         
